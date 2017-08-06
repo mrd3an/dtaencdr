@@ -4,31 +4,64 @@
 </script>
 <script>
 function postContactToGoogle() {
-var fullname=$('#fullname').val();
+var nickname=$('#nickname').val();
+var completename=$('#completename').val();
 var mobilenumber=$('#mobilenumber').val();
-var yourquery=$('#yourquery').val();
+var emailaddress=$('#emailaddress').val();
+var whyshouldwehireyou=$('#whyshouldwehireyou').val();
 $.ajax({
-url:"",data:{"entry_":fullname,"entry_":mobilenumber,"entry_":yourquery},type:"POST",dataType:"xml",statusCode: {0:function() { window.location.replace("https://mrd3an.github.io/dtaencdr/thankyou.html");},200:function(){window.location.replace("https://mrd3an.github.io/dtaencdr/thankyou.html");}}
+url:"https://docs.google.com/forms/d/e/1FAIpQLScGLjBo9dW5sULsbfOJCF2SOjI6hSQWx_aMG0JrNgHOKyPgqw/formResponse",data:
+
+{"entry.686029055":nickname,"entry.1922298249":completename,"entry.1148249685":mobilenumber, 
+
+"entry.1967258399":emailaddress, "entry.84005956":whyshouldwehireyou},type:"POST",dataType:"xml",statusCode: {0:function() 
+
+{ window.location.replace("https://mrd3an.github.io/dtaencdr/thankyou.html");},200:function(){window.location.replace("https://mrd3an.github.io/dtaencdr/thankyou.html");}}
 });
 }
 </script>
-
+<style>
+.FormRequest {
+background: lightyellow;
+width:400px;
+height:250px;
+border:1px solid blue;
+border-radius:10px 10px 10px 10px;
+}
+.FormRequest #formRequest{
+margin-left:20px;
+font-family:consolas;
+color: blue;
+}
+.FormRequest #formRequest input[type="button"],input[type="reset"]{
+border:1px solid green;
+background: darkred;
+color:white;
+border-radius:3px 3px 3px 3px;
+}
+</style>
 </head>
-<body bgcolor="#f7f7f7">
+<body bgcolor="silver">
 
 <table  class="FormRequest" align="center">
 <tr><td>
 <form id="formRequest">
 
-FULL NAME:<br/>
-<input type="text" name="fullname" id="fullname" placeholder="Full Name" /><br/>
+Nickname:<br/>
+<input type="text" name="nickname" id="nickname"/><br/>
+
+Complete Name:<br/>
+<input type="text" name="completename" id="completename"/><br/>
 
 MOBILE NUMBER:<br/>
-<input type="text" name="mobilenumber" id="mobilenumber" maxlength="10" placeholder="10 digit mobile number" /><br/>
+<input type="text" name="mobilenumber" id="mobilenumber" maxlength="13" placeholder="+639" /><br/>
+
+Email Address:<br/>
+<input type="text" name="completename" id="completename"/><br/>
 
 
-WRITE SOMETHING ABOUT YOUR QUERY:<br/>
-<textarea name="yourquery" id="yourquery" form="formRequest" rows="4" cols="40" placeholder="Write your query here..."></textarea><br/><br/>
+Why Should We Hire You?:<br/>
+<textarea name="whyshouldwehireyou" id="whyshouldwehireyou" form="formRequest" rows="4" cols="40" ></textarea><br/><br/>
 
 <center>
 <input type="button" name="Submit" id="Submit" onclick="postContactToGoogle()" value="Submit"/>
